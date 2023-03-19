@@ -1,0 +1,133 @@
+METAPROMPT(GeneratePrompts, Context:<context>, Output:PromptList)
+SEEDPROMPT(InitiatePromptGen, Condition:None, Output:InitialPrompt)
+PROMPT(CustomCategory, Function:CustomFunc, Condition:CustomCond, Output:CustomOutput)
+PROMPTSUMMARY(SummarizePrompt, Audience:Prompters, Format:InContextSummary)
+EXECUTIVEPROMPTSUMMARY(ExplainOutput, Audience:NonPrompters, Format:ConciseExplanation)
+
+
+----------
+
+TUTORIAL:
+
+Step 1: Define the metaprompt
+
+The metaprompt is used to generate the actual prompts we want the AI model to follow. We'll define a metaprompt that asks the AI to generate prompts related to suggesting movies based on user preferences.
+
+METAPROMPT(GenerateMoviePrompts, Context:MovieSuggestions, Output:PromptList)
+
+Step 2: Create the seed prompt
+
+The seed prompt initiates the prompt generation process. For this example, we'll ask the AI to provide a movie suggestion based on a given genre and a user's preference for action scenes.
+
+
+SEEDPROMPT(SuggestMovie, Condition:GenreAndActionPreference, Output:MovieTitle)
+Step 3: Define additional prompts
+
+You can add more prompts to cover different aspects of movie suggestions. Here, we'll create two additional prompts: one for movie suggestions based on director preferences, and another for suggestions based on a user's favorite actor.
+
+PROMPT(DirectorPreference, Function:SuggestMovieByDirector, Condition:Director, Output:MovieTitle)
+PROMPT(ActorPreference, Function:SuggestMovieByActor, Condition:Actor, Output:MovieTitle)
+Step 4: Create prompt summaries
+
+These summaries help prompters understand the context and purpose of each prompt. We'll create a prompt summary for the seed prompt and the additional prompts.
+
+
+PROMPTSUMMARY(SummarizeSeedPrompt, Audience:Prompters, Format:InContextSummary)
+PROMPTSUMMARY(SummarizeAdditionalPrompts, Audience:Prompters, Format:InContextSummary)
+Step 5: Develop executive prompt summaries
+
+Executive prompt summaries are designed for non-prompters to quickly understand the context and desired output. We'll create an executive prompt summary for our set of movie suggestion prompts.
+
+EXECUTIVEPROMPTSUMMARY(MovieSuggestionSummary, Audience:NonPrompters, Format:ConciseExplanation)
+Final Prompt Set
+
+Here's the complete set of prompts for generating movie suggestions:
+
+
+METAPROMPT(GenerateMoviePrompts, Context:MovieSuggestions, Output:PromptList)
+SEEDPROMPT(SuggestMovie, Condition:GenreAndActionPreference, Output:MovieTitle)
+PROMPT(DirectorPreference, Function:SuggestMovieByDirector, Condition:Director, Output:MovieTitle)
+PROMPT(ActorPreference, Function:SuggestMovieByActor, Condition:Actor, Output:MovieTitle)
+PROMPTSUMMARY(SummarizeSeedPrompt, Audience:Prompters, Format:InContextSummary)
+PROMPTSUMMARY(SummarizeAdditionalPrompts, Audience:Prompters, Format:InContextSummary)
+EXECUTIVEPROMPTSUMMARY(MovieSuggestionSummary, Audience:NonPrompters, Format:ConciseExplanation)
+This tutorial demonstrates how to use the revised core language for prompt engineering. You can follow the same steps to create and manage prompts for other tasks or applications as needed.
+
+----------
+
+
+Have the model think through the steps to compute:
+
+As an AI model, I will take you through the process of executing these prompts step by step:
+
+Step 1: Execute the metaprompt
+
+The metaprompt asks the AI to generate movie-related prompts. In this case, I will recognize that the context is "MovieSuggestions" and understand that I need to generate a list of prompts related to suggesting movies.
+
+Output: Acknowledging the metaprompt and preparing to generate movie-related prompts.
+
+Step 2: Execute the seed prompt
+
+The seed prompt requests a movie suggestion based on a genre and action preference. I will consider these conditions and generate a movie title accordingly.
+
+Output: "Given your preference for action-packed science fiction movies, I recommend the movie 'The Matrix.'"
+
+Step 3: Execute additional prompts
+
+I will now execute the additional prompts related to director and actor preferences.
+
+For DirectorPreference:
+Output: "If you enjoy movies directed by Christopher Nolan, you might like 'Inception.'"
+
+For ActorPreference:
+Output: "Since you're a fan of Tom Hanks, I recommend watching 'Forrest Gump.'"
+
+Step 4: Execute prompt summaries
+
+Now, I will create summaries for the seed prompt and additional prompts to help prompters understand their context and purpose.
+
+For SummarizeSeedPrompt:
+Output: "The seed prompt asks for a movie suggestion based on the user's genre and action scene preferences."
+
+For SummarizeAdditionalPrompts:
+Output: "Additional prompts cover movie suggestions based on the user's preferred director and favorite actor."
+
+Step 5: Execute executive prompt summary
+
+Finally, I will generate a concise explanation of the movie suggestion prompts for non-prompters to understand.
+
+For MovieSuggestionSummary:
+Output: "This set of prompts helps the AI model generate movie suggestions based on user preferences, such as genre, action scenes, director, and actors."
+Now, we have successfully executed all the prompts and generated the desired outputs.
+
+
+----------
+Potential Seed to PromptLang:
+
+SEEDPROMPT(InterpretPromptLanguage, Context:PromptLanguageInstructions, Output:LanguageModelUnderstanding)
+
+You are PromptLang, a mastermind metaprompting language designed for the efficent creation of prompts. Given a set of instructions in PromptLang, your task is to interpret and execute the provided prompts in the correct sequence. PromptLang consists of the following primitive elements:
+
+1. METAPROMPT: A high-level instruction for generating a list of related prompts.
+2. SEEDPROMPT: The initial prompt that sets the context and defines the primary goal.
+3. PROMPT: Additional prompts that provide further information or refinements.
+4. PROMPTSUMMARY: A brief explanation of the context and purpose of a prompt, designed for prompters.
+5. EXECUTIVEPROMPTSUMMARY: A concise summary of a prompt, intended for non-prompters.
+
+To execute the steps, first, identify the metaprompt and use it to generate the list of related prompts. Then, proceed to the seed prompt, which defines the primary goal, and follow with the additional prompts. For each prompt, ensure you understand its context, function, condition, and desired output. Finally, create prompt summaries and executive prompt summaries to help both prompters and non-prompters understand the context and purpose of each prompt.
+
+Remember to pay attention to the specific details provided within the prompts, as they will guide you in producing the appropriate output for each step.
+
+----------
+OUTPUTSPECIFICATION(OutputFormat, Context:ResponseFormatting, Output:FormattedResponse)
+
+The output specification in the PromptLanguage defines the format and structure of the language model's response. To ensure consistent and readable responses, adhere to the following guidelines:
+
+1. Use clear and concise language.
+2. Organize the response into logical sections or paragraphs.
+3. Employ appropriate formatting elements, such as bullet points, numbered lists, or tables, to present information in an easy-to-read manner.
+4. If applicable, provide summaries, highlights, or key takeaways for the audience.
+5. Ensure proper grammar, punctuation, and spelling throughout the response.
+
+By following the output specification, the language model will produce responses that are consistently formatted, well-structured, and easy to comprehend for the intended audience.
+
